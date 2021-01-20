@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      transition: 0.3s;
+      width: 30%;
+      justify-content: center;
+      display: block;
+      margin-left: 520px;
+      margin-top: 20px;
+
+    }
+    
+    .card:hover {
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+    
+    .container {
+      padding: 2px 16px;
+    }
+    .fonti a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+    </style>
+    </head>
+    <body>
+    
+    <h2 style="margin-top: 30px; text-align: center;font-weight: bold;font-family: cursive;">Profile</h2>
+    
+    <div class="card">
+      <img src="{% static 'images/bg.jpg' %}" alt="Avatar" style="width:100%">
+      <div class="container">
+        <h4><b>Username : {{first_name}} {{last_name}}</b></h4> 
+        <p>Account No: {{acoount_no}}</p>
+        <p>Email : {{user_email}}</p>
+        <p>Balance : {{current_balance}}</p> 
+      </div>
+      <div style="margin: 24px 0;" class="fonti">
+        <a href="#"><i class="fa fa-dribbble"></i></a> 
+        <a href="#"><i class="fa fa-twitter"></i></a>  
+        <a href="#"><i class="fa fa-linkedin"></i></a>  
+        <a href="#"><i class="fa fa-facebook"></i></a> 
+      </div>
+      <a href="{% url 'make_transaction' acoount_no %}" class="btn btn-success">make transaction</a>
+    </div>
+    
+    </body>
+    
+
+
+{% endblock content %}
+
+

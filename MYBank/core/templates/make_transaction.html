@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color:gainsboro;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    /* Add padding to containers */
+    .container {
+      padding: 16px;
+      background-color: white;
+    }
+    
+    /* Full-width input fields */
+    input[type=text], input[type=password] {
+      width: 100%;
+      padding: 15px;
+      margin: 5px 0 22px 0;
+      display: inline-block;
+      border: none;
+      background: #f1f1f1;
+    }
+    
+    input[type=text]:focus, input[type=password]:focus {
+      background-color: #ddd;
+      outline: none;
+    }
+    
+    /* Overwrite default styles of hr */
+    hr {
+      border: 1px solid #f1f1f1;
+      margin-bottom: 25px;
+    }
+    
+    /* Set a style for the submit button */
+    .registerbtn {
+      background-color: #4c72af;
+      color: white;
+      padding: 16px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      opacity: 0.9;
+    }
+    
+    .registerbtn:hover {
+      opacity: 1;
+    }
+    .form1{
+        height: 100px;
+        width: 500px;
+        margin-left: 500px;
+    }
+    /* Add a blue text color to links */
+    a {
+      color: dodgerblue;
+    }
+    .sender p{
+        text-align: center;
+        font-weight: bold;
+    }
+    
+    </style>
+    </head>
+    <body>
+        <h1 style="text-align: center; font-weight: bold; font-family: cursive; padding-top: 10px;">Sender Details</h1>
+        <div class="sender">
+            <p>Username : {{first_name}} {{last_name}}</p>
+            <p>Email : {{user_email}}</p>
+            <p>Account No. : {{acoount_no}}</p>
+        </div>
+        <hr>
+        <h1 style="text-align: center; font-weight: bold; font-family: cursive; padding-top: 10px;">Sender Details</h1>
+        <hr>
+        
+    <form action="{% url 'transfer' %}" class="form1" method="POST">
+      {% csrf_token %}
+      <div class="container">
+        
+        <!-- <label for="reciever_acc"><b>Reciever Account No.</b></label>
+        <input type="text" placeholder="Enter Reciever Acoount no." name="reciever_acc" required> -->
+        <label for="sender_email"><b> Sender Email</b></label><br>
+        <input type="text" placeholder="Enter Email" name="sender_email" id="email" required><br>
+        <label for="sender_acc"><b>sender Account No.</b></label>
+        <input type="text" placeholder="Enter sender Acoount no." name="sender_acc" required>
+        <label for="sender_password">Password</label>
+        <input type="password" name="sender_password" id="" placeholder="Enter password">
+        <label for="reciever_email"><b> reciever Email</b></label><br>
+        <input type="text" placeholder="Enter Email" name="reciever_email" id="email" required><br>
+    
+        <label for="reciever_acc"><b>reciever Account No.</b></label>
+        <input type="text" placeholder="Enter sender Acoount no." name="reciever_acc" required>
+        <label for="amount">Amount</label>
+        <input type="text" placeholder="Enter Amount" name="amount" required>
+        <!-- <label for="r_name">Account Holder Name</label>
+        <input type="text" name="r_name" id="" placeholder="Enter Account Holder Name"> -->
+
+    
+        <input type="Submit" class="btn btn-danger mt-2" value="transfer">
+      </div>
+      
+    </form>
+    
+    </body>
+{% endblock content %}
